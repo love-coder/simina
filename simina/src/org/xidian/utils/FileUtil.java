@@ -28,7 +28,6 @@ public final class FileUtil
           //  System.out.println("file [" + filePath + "] is not exist or cannot read!!!");
             return null;
         }
-
         BufferedReader br = null;
         FileReader fb = null;
         StringBuffer sb = new StringBuffer();

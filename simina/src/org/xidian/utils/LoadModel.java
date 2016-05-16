@@ -1,6 +1,7 @@
 package org.xidian.utils;
 
 import java.io.File;
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 import org.xidian.model.PetriModel;
@@ -19,9 +20,20 @@ public class LoadModel {
 	 */
 	public void loadResource(String filePath) {
 		String resource = FileUtil.read(filePath, null);
-		System.out.println(resource);
 		
-		model = new PetriModel(1,2);
+		Pattern pattern = Pattern.compile("\r|\n");
+    	String[] strs = pattern.split(resource);
+
+    	for(int i = 1; i < strs.length; i++) {
+    		Pattern pattern2 = Pattern.compile("\" \"");
+        	String[] strs2 = pattern.split(strs[i]);
+    	}
+		
+		
+		
+		
+		
+		
 		
 	}
 	

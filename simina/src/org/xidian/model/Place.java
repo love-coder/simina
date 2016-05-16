@@ -6,8 +6,10 @@ package org.xidian.model;
  */
 public class Place {
 
-	public String placeName;
-	
-	
+	private int[] place;
+
+	public Place(int placeCount) {
+		this.place = new int[placeCount] ;
+	}
 	
 }
