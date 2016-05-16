@@ -1,7 +1,7 @@
 package org.xidian.model;
 
 /**
- * ±äÇ¨Àà
+ * å˜è¿ç±»
  * @author HanChun
  * @version 1.0 2016-5-16
  */

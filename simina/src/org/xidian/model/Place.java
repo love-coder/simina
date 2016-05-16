@@ -1,6 +1,6 @@
 package org.xidian.model;
 /**
- * ¿âËùÀà
+ * åº“æ‰€ç±»
  * @author HanChun
  * @version 1.0 2016-5-16
  */

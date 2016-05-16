@@ -1,7 +1,7 @@
 package org.xidian.model;
 
 /**
- * marking ¿‡
+ * marking Á±ª
  * @author HanChun
  * @version 1.0 2016-5-16
  */

@@ -1,7 +1,7 @@
 package org.xidian.model;
 
 /**
- * 矩阵相关操作
+ * 鐭╅樀鐩稿叧鎿嶄綔
  * @author HanChun
  * @version 1.0 2016-5-16
  */
@@ -11,9 +11,9 @@ public class Matrix {
 	public String matrixName;
 	
 	/**
-	 * @param i place个数
-	 * @param j token个数
-	 * @param matrixName 矩阵名称
+	 * @param i place涓暟
+	 * @param j token涓暟
+	 * @param matrixName 鐭╅樀鍚嶇О
 	 */
 	public Matrix(int i, int j, String matrixName) {
 		matrix = new int[i][j];
@@ -21,7 +21,7 @@ public class Matrix {
 	}
 
 	/**
-	 * 指定某个元素值为value
+	 * 鎸囧畾鏌愪釜鍏冪礌鍊间负value
 	 * @param i
 	 * @param j
 	 * @param value

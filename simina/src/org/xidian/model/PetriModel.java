@@ -1,14 +1,14 @@
 package org.xidian.model;
 
 /**
- * petri net 数学模型
+ * petri net 鏁板妯″瀷
  * @author HanChun
  * @version 1.0 2016-5-16
  */
 public class PetriModel {
 	
-	public Matrix preMatrix; //前置矩阵
-	public Matrix posMatrix; //后置矩阵
+	public Matrix preMatrix; //鍓嶇疆鐭╅樀
+	public Matrix posMatrix; //鍚庣疆鐭╅樀
 	public Place place;
 	public Marking initialMarking; 
 	

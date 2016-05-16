@@ -1,7 +1,7 @@
 package org.xidian.calculation;
 
 /**
- * ¼ÆËã¿É´ïÍ¼
+ * è®¡ç®—å¯è¾¾å›¾
  * @author HanChun
  * @version 1.0 2016-5-16
  *

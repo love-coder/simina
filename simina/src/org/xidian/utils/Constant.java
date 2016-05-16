@@ -3,14 +3,14 @@ package org.xidian.utils;
 import java.io.File;
 
 /**
- * ÏîÄ¿ÖĞ³£Á¿
+ * é¡¹ç›®ä¸­å¸¸é‡
  * @author HanChun
  * @version 1.0 2016-5-16
  */
 public class Constant {
 	
 	/**
-	 * ÏîÄ¿¸ùÂ·¾¶
+	 * é¡¹ç›®æ ¹è·¯å¾„
 	 */
 	public final static String rootPath = System.getProperty("user.dir")+ File.separator; 
 
