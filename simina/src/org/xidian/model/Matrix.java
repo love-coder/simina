@@ -15,8 +15,8 @@ public class Matrix {
 	 * @param j token个数
 	 * @param matrixName 矩阵名称
 	 */
-	public Matrix(int i, int j, String matrixName) {
-		matrix = new int[i][j];
+	public Matrix(int rows, int cols, String matrixName) {
+		matrix = new int[rows][cols];
 		this.matrixName = matrixName;
 	}
 

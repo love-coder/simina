@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.xidian.model.PetriModel;
 
 /**
- * ������ѧģ��
+ * 加载model
  * @author HanChun
  * @version 1.0 2016-5-16
  */
@@ -20,6 +20,9 @@ public class LoadModel {
 	public void loadResource(String filePath) {
 		String resource = FileUtil.read(filePath, null);
 		System.out.println(resource);
+		
+		model = new PetriModel(1,2);
+		
 	}
 	
 	

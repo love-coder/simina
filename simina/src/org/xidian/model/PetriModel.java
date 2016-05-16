@@ -10,7 +10,18 @@ public class PetriModel {
 	public Matrix preMatrix; //前置矩阵
 	public Matrix posMatrix; //后置矩阵
 	public Place place;
-	public Marking initialMarking; 
+	public Marking marking;
+	
+	public PetriModel(int placesCount, int trasCount) {
+
+		preMatrix = new Matrix(placesCount, trasCount, "preMatrix");
+		posMatrix = new Matrix(placesCount, trasCount, "posMatrix");
+		marking = new Marking(placesCount);
+		
+		
+	} 
+	
+	
 	
 	
 	
