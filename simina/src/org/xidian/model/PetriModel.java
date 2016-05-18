@@ -22,16 +22,5 @@ public class PetriModel {
 		marking = new Marking(placesCount);
 		place = new Place(placesCount);
 	} 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

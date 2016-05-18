@@ -11,6 +11,13 @@ public class Matrix {
 	public String matrixName;
 	
 	/**
+	 * 
+	 */
+	public Matrix() {
+		
+	}
+	
+	/**
 	 * @param i place个数
 	 * @param j token个数
 	 * @param matrixName 矩阵名称
@@ -18,6 +25,16 @@ public class Matrix {
 	public Matrix(int rows, int cols, String matrixName) {
 		matrix = new int[rows][cols];
 		this.matrixName = matrixName;
+	}
+	
+	//for debug 
+	public void printMatrix(int[][] matrix) {
+		for(int i = 0; i < matrix.length; i++) {
+			for(int j = 0; j< matrix[0].length; j++) {
+				System.out.print(matrix[i][j] + " ");
+			}
+			System.out.println();
+		}
 	}
 
 	/**

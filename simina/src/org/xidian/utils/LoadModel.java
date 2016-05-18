@@ -22,11 +22,20 @@ public class LoadModel {
 		String resource = FileUtil.read(filePath, null);
 		
 		Pattern pattern = Pattern.compile("\r|\n");
+		
+		Pattern pattern2 = Pattern.compile("\" \"");
+		
     	String[] strs = pattern.split(resource);
+    	
+    	String[] strs2 = new String[3];
+    	
+   
 
     	for(int i = 1; i < strs.length; i++) {
-    		Pattern pattern2 = Pattern.compile("\" \"");
-        	String[] strs2 = pattern.split(strs[i]);
+        	strs2 = pattern2.split(strs[i]);
+        	for(int j = 0; j < strs2.length; j++) {
+        		System.out.println(strs2[j] );
+        	}
     	}
 		
 		
