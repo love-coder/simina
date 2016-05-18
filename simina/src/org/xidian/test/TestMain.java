@@ -14,7 +14,6 @@ public class TestMain {
 	public static void main(String[] args) {
 		int[][] pre = new int[10][10];
 		int[][] pos = new int[10][10];
-		
 		String s = "9       2      8:2 2 , 7:2 1";
 		//String s = "8       0      7 , 8";
 		String[] strArr = s.split(","); 

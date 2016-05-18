@@ -28,13 +28,32 @@ public class Matrix {
 	}
 	
 	//for debug 
-	public void printMatrix(int[][] matrix) {
+	public static void printMatrix(int[][] matrix) {
 		for(int i = 0; i < matrix.length; i++) {
 			for(int j = 0; j< matrix[0].length; j++) {
 				System.out.print(matrix[i][j] + " ");
 			}
 			System.out.println();
 		}
+	}
+	
+	/**
+	 * 矩阵复制
+	 * @param startRow 
+	 * @param startCol
+	 * @param endRow
+	 * @param endCol
+	 * @param matrix
+	 * @return
+	 */
+	public static int[][] copyMatrix(int startRow, int startCol, int endRow, int endCol, int[][] matrix) {
+		int[][] temMatrix = new int[endRow-startRow][endCol-startCol];
+		for(int i = startRow; i < endRow; i++) {
+			for(int j = startCol; j < endCol; i++){
+				temMatrix[i-startRow][j-startCol] = matrix[i][j];
+			}
+		}
+		return temMatrix;
 	}
 
 	/**
