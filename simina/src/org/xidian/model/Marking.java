@@ -7,33 +7,12 @@ package org.xidian.model;
  */
 public class Marking {
 	
-	private int[] initialMarking;
-	private int[] currentMarking;
+	private int[] marking;
 	
-	public Marking(int placeCount) {
-		initialMarking = new int[placeCount];
-		currentMarking = new int[placeCount];
+	public Marking(int[] marking) {
+		this.marking = marking;
 	}
 	
-	public Marking(int[] initialMarking) {
-		this.initialMarking = initialMarking;
-		this.currentMarking = initialMarking;
-	}
-
-	public int[] getInitialMarking() {
-		return initialMarking;
-	}
-
-	public void setInitialMarking(int[] initialMarking) {
-		this.initialMarking = initialMarking;
-	}
-
-	public int[] getCurrentMarking() {
-		return currentMarking;
-	}
-
-	public void setCurrentMarking(int[] currentMarking) {
-		this.currentMarking = currentMarking;
-	}
+	
 
 }

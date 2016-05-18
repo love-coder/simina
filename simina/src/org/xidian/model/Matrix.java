@@ -18,6 +18,19 @@ public class Matrix {
 	}
 	
 	/**
+	 * 
+	 * @param matrix
+	 * @param matrixName
+	 */
+	public Matrix(int[][] matrix, String matrixName) {
+		super();
+		this.matrix = matrix;
+		this.matrixName = matrixName;
+	}
+
+
+
+	/**
 	 * @param i place个数
 	 * @param j token个数
 	 * @param matrixName 矩阵名称
@@ -49,7 +62,7 @@ public class Matrix {
 	public static int[][] copyMatrix(int startRow, int startCol, int endRow, int endCol, int[][] matrix) {
 		int[][] temMatrix = new int[endRow-startRow][endCol-startCol];
 		for(int i = startRow; i < endRow; i++) {
-			for(int j = startCol; j < endCol; i++){
+			for(int j = startCol; j < endCol; j++){
 				temMatrix[i-startRow][j-startCol] = matrix[i][j];
 			}
 		}

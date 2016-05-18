@@ -8,8 +8,8 @@ public class Place {
 
 	private int[] place;
 
-	public Place(int placeCount) {
-		this.place = new int[placeCount] ;
+	public Place(int[] place) {
+		this.place = place;
 	}
 	
 }

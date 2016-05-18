@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.junit.Test;
+import org.xidian.model.Marking;
 import org.xidian.model.Matrix;
 import org.xidian.model.PetriModel;
+import org.xidian.model.Place;
 
 /**
  * 加载model
@@ -26,7 +28,7 @@ public class LoadModel {
 	/**
 	 * @param filePath 文件路径
 	 */
-	public void loadResource(String filePath) {
+	public PetriModel loadResource(String filePath) {
 		//1.读文件
 		String resource = FileUtil.read(filePath, null);
 		Pattern pattern = Pattern.compile("\r|\n");
@@ -38,90 +40,57 @@ public class LoadModel {
     		parseModelLine(strs[i]);
     	}
     	//3.得到模型
-    	preMatrix = Matrix.copyMatrix(0, 0, strs.length-3, trueMaxTran, preMatrix);
-    	posMatrix = Matrix.copyMatrix(0, 0, strs.length-3, trueMaxTran, posMatrix);
+    	preMatrix = Matrix.copyMatrix(0, 0, strs.length-2, trueMaxTran, preMatrix);
+    	posMatrix = Matrix.copyMatrix(0, 0, strs.length-2, trueMaxTran, posMatrix);
     	
-    	Matrix.printMatrix(preMatrix);
-    	
-    	
-    	
+    	int[] place = new int[iniMarking.size()];
+    	for(int i = 0; i<iniMarking.size();i++) {
+    		place[i] = i; 
+    	}
+    	int[] marking = new int[iniMarking.size()];
+    	for(int i = 0; i<iniMarking.size();i++) {
+    		marking[i] = iniMarking.get(i); 
+    	}
+    	return new PetriModel(new Matrix(preMatrix, "preMatrix"), new Matrix(posMatrix, "posMatrix"), new Place(place), new Marking(marking));
 	}
-	
-//	@Test
-//	public void testS(){
-//		parseModelLine("");
-//	}
 	
 	/**
 	 * 解析模型
 	 * @param str pnt文件的一行
 	 */
 	public void parseModelLine(String str){
-		System.out.println("正在解析##" + str);
-		
+		if(str.equals("@")) return;
+		System.out.println("正在解析##" + str); //for debug
 		String[] strArr = str.split(","); 
-		String preStr = strArr[0].replaceAll("\\s{1,}", " ");
-		String posStr = strArr[1].replaceAll("\\s{1,}", " ") + " ";
-		
+		//前置矩阵
+		String preStr = strArr[0].replaceAll("\\s{1,}", " ").trim();
+		String[] preArr = preStr.split(" ");
 		iniMarking = new LinkedList<Integer>();
-		char[] preCharArr = preStr.toCharArray();
-		
-		//String[] preStringArry =
-		
-		//初始矩阵
-		iniMarking.add((int)preCharArr[2]-49);
-		//得到前置矩阵
-		for(int i = 4; i < preCharArr.length; ){
-			if((i+1)>(preCharArr.length-1)) break;
-			if(preCharArr[i] != ' '){
-				//更新最大变迁数
-				if((int)preCharArr[i]-49 > trueMaxTran) {
-					trueMaxTran = (int)preCharArr[i]-49; 
-				}
-				//弧权值为1的情况
-				if(preCharArr[i+1] !=':') {
-					preMatrix[(int)preCharArr[0]-49][(int)preCharArr[i]-49] = 1;
-					if(preMatrix.length>=(i+2)) {
-						i += 2;
-					}
-				//不为1的情况
-				}else{
-					preMatrix[(int)preCharArr[0]-49][(int)preCharArr[i]-49] = (int)preCharArr[i+2]-48;
-					if(preMatrix.length>=(i+4)) {
-						i += 4;
-					}
-				}
-			}
-		}
-		
-		char[] posCharArr = posStr.toCharArray();
-		
-		//得到后置矩阵
-		for(int i = 0; i < posCharArr.length; ){
-			if((i+1)>(posCharArr.length-1)) break;
-			if(posCharArr[i] != ' '){
-				//更新最大变迁数
-				if((int)posCharArr[i]-49 > trueMaxTran) {
-					trueMaxTran = (int)posCharArr[i]-49; 
-				}
-				//弧权值为1的情况
-				if(posCharArr[i+1] !=':') {
-					posMatrix[(int)preCharArr[0]-49][(int)posCharArr[i]-49] = 1;
-					if(posMatrix.length>=(i+2)) {
-						i += 2;
-					}
-				//不为1的情况
-				}else{
-					posMatrix[(int)preCharArr[0]-49][(int)posCharArr[i]-49] = (int)posCharArr[i+2]-48;
-					if(posMatrix.length>=(i+4)) {
-						i += 4;
-					}
-				}
+		iniMarking.add(Integer.parseInt(preArr[1]));
+		for(int i = 2; i < preArr.length; i++) {
+			if(preArr[i].contains(":")) {
+				String[] tem = preArr[i].split(":");
+				if((Integer.parseInt(tem[0]))>trueMaxTran) trueMaxTran = Integer.parseInt(tem[0]);
+				preMatrix[Integer.parseInt(preArr[0])-1][Integer.parseInt(tem[0])-1] = Integer.parseInt(tem[1]);
 			}else{
-				i++;
+				if(Integer.parseInt(preArr[i])>trueMaxTran) trueMaxTran = Integer.parseInt(preArr[i]);
+				preMatrix[Integer.parseInt(preArr[0])-1][Integer.parseInt(preArr[i])-1] = 1;
 			}
 		}
-		//System.out.println("####"+ trueMaxTran);
+		//后置矩阵
+		String posStr = strArr[1].replaceAll("\\s{1,}", " ").trim();
+		String[] posArr = posStr.split(" ");
+		for(int i = 0; i < posArr.length; i++) {
+			if(posArr[i] == null) continue;
+			if(posArr[i].contains(":")) {
+				String[] tem2 = posArr[i].split(":");
+				if((Integer.parseInt(tem2[0]))>trueMaxTran) trueMaxTran = Integer.parseInt(tem2[0]);
+				posMatrix[Integer.parseInt(preArr[0])-1][Integer.parseInt(tem2[0])-1] = Integer.parseInt(tem2[1]);
+			}else{
+				if(Integer.parseInt(posArr[i])>trueMaxTran) trueMaxTran = Integer.parseInt(posArr[i]);
+				posMatrix[Integer.parseInt(preArr[0])-1][Integer.parseInt(posArr[i])-1] = 1;
+			}
+		}
 	}
 	
 	/**
@@ -153,18 +122,7 @@ public class LoadModel {
 	
 	@Test
 	public void testMedel(){
-		
-		String s = "1 2 98 56 1 ";
-		parseCharToStringArr(s.toCharArray());
-		System.out.println();
-		
+		loadResource(Constant.rootPath+"resources"+File.separator+"test.pnt");
 	}
-	
-	
-	
-//	@Test
-//	public void testMedel(){
-//		loadResource(Constant.rootPath+"resources"+File.separator+"test.pnt");
-//	}
 	
 }

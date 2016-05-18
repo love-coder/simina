@@ -9,18 +9,20 @@ public class PetriModel {
 	
 	public Matrix preMatrix; //前置矩阵
 	public Matrix posMatrix; //后置矩阵
-	public Place place;
-	public Marking marking;
+	public Place place; //扩所
+	public Marking ininmarking; //初始marking
 	
-	/**
-	 * @param placesCount 扩所个数
-	 * @param trasCount 变迁个数
-	 */
-	public PetriModel(int placesCount, int trasCount) {
-		preMatrix = new Matrix(placesCount, trasCount, "preMatrix");
-		posMatrix = new Matrix(placesCount, trasCount, "posMatrix");
-		marking = new Marking(placesCount);
-		place = new Place(placesCount);
-	} 
+	public PetriModel(Matrix preMatrix, Matrix posMatrix, Place place, Marking ininmarking) {
+		super();
+		this.preMatrix = preMatrix;
+		this.posMatrix = posMatrix;
+		this.place = place;
+		this.ininmarking = ininmarking;
+	}
+	
+	
+	
+	
+	
 
 }
