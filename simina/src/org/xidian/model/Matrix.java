@@ -18,7 +18,6 @@ public class Matrix {
 	}
 	
 	/**
-	 * 
 	 * @param matrix
 	 * @param matrixName
 	 */
@@ -28,8 +27,6 @@ public class Matrix {
 		this.matrixName = matrixName;
 	}
 
-
-
 	/**
 	 * @param i place个数
 	 * @param j token个数
@@ -38,16 +35,6 @@ public class Matrix {
 	public Matrix(int rows, int cols, String matrixName) {
 		matrix = new int[rows][cols];
 		this.matrixName = matrixName;
-	}
-	
-	//for debug 
-	public static void printMatrix(int[][] matrix) {
-		for(int i = 0; i < matrix.length; i++) {
-			for(int j = 0; j< matrix[0].length; j++) {
-				System.out.print(matrix[i][j] + " ");
-			}
-			System.out.println();
-		}
 	}
 	
 	/**
@@ -78,6 +65,27 @@ public class Matrix {
 	public void setMatrix(int i, int j, int value) {
 		if(matrix != null) {
 			matrix[i][j] = value; 
+		}
+	}
+	
+	/**
+	 * 得到矩阵中某个值
+	 * @param i
+	 * @param j
+	 * @return
+	 */
+	public int getValue(int i, int j) {
+		return this.matrix[i][j];
+	}
+	
+	
+	//for debug 
+	public static void printMatrix(int[][] matrix) {
+		for(int i = 0; i < matrix.length; i++) {
+			for(int j = 0; j< matrix[0].length; j++) {
+				System.out.print(matrix[i][j] + " ");
+			}
+			System.out.println();
 		}
 	}
 	

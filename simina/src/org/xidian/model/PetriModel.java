@@ -7,22 +7,48 @@ package org.xidian.model;
  */
 public class PetriModel {
 	
-	public Matrix preMatrix; //前置矩阵
-	public Matrix posMatrix; //后置矩阵
-	public Place place; //扩所
-	public Marking ininmarking; //初始marking
+	private Matrix preMatrix; //前置矩阵
+	private Matrix posMatrix; //后置矩阵
+	private Transition transition; //变迁
+	private Marking ininmarking; //初始marking
 	
-	public PetriModel(Matrix preMatrix, Matrix posMatrix, Place place, Marking ininmarking) {
-		super();
+	public PetriModel(Matrix preMatrix, Matrix posMatrix, Transition transition, Marking ininmarking) {
 		this.preMatrix = preMatrix;
 		this.posMatrix = posMatrix;
-		this.place = place;
+		this.transition = transition;
+		this.ininmarking = ininmarking;
+	}
+
+	public Matrix getPreMatrix() {
+		return preMatrix;
+	}
+
+	public void setPreMatrix(Matrix preMatrix) {
+		this.preMatrix = preMatrix;
+	}
+
+	public Matrix getPosMatrix() {
+		return posMatrix;
+	}
+
+	public void setPosMatrix(Matrix posMatrix) {
+		this.posMatrix = posMatrix;
+	}
+
+	public Transition getTransition() {
+		return transition;
+	}
+
+	public void setTransition(Transition transition) {
+		this.transition = transition;
+	}
+
+	public Marking getIninmarking() {
+		return ininmarking;
+	}
+
+	public void setIninmarking(Marking ininmarking) {
 		this.ininmarking = ininmarking;
 	}
 	
-	
-	
-	
-	
-
 }

@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.xidian.model.Marking;
 import org.xidian.model.Matrix;
 import org.xidian.model.PetriModel;
-import org.xidian.model.Place;
+import org.xidian.model.Transition;
 
 /**
  * 加载model
@@ -25,10 +25,17 @@ public class LoadModel {
 	int defaultTranCount = 1000; //默认最大变迁数量为1000
 	int trueMaxTran = 0; //实际最大的变迁编号
 	
+	String filePath; //文件位置
+	
+	public LoadModel(String filePath) {
+		this.filePath = filePath;
+		loadResource();
+	}
+
 	/**
 	 * @param filePath 文件路径
 	 */
-	public PetriModel loadResource(String filePath) {
+	public PetriModel loadResource() {
 		//1.读文件
 		String resource = FileUtil.read(filePath, null);
 		Pattern pattern = Pattern.compile("\r|\n");
@@ -43,15 +50,15 @@ public class LoadModel {
     	preMatrix = Matrix.copyMatrix(0, 0, strs.length-2, trueMaxTran, preMatrix);
     	posMatrix = Matrix.copyMatrix(0, 0, strs.length-2, trueMaxTran, posMatrix);
     	
-    	int[] place = new int[iniMarking.size()];
-    	for(int i = 0; i<iniMarking.size();i++) {
-    		place[i] = i; 
+    	int[] transation = new int[trueMaxTran];
+    	for(int i = 0; i<transation.length;i++) {
+    		transation[i] = i; 
     	}
     	int[] marking = new int[iniMarking.size()];
     	for(int i = 0; i<iniMarking.size();i++) {
     		marking[i] = iniMarking.get(i); 
     	}
-    	return new PetriModel(new Matrix(preMatrix, "preMatrix"), new Matrix(posMatrix, "posMatrix"), new Place(place), new Marking(marking));
+    	return new PetriModel(new Matrix(preMatrix, "preMatrix"), new Matrix(posMatrix, "posMatrix"), new Transition(transation), new Marking(marking));
 	}
 	
 	/**
@@ -122,7 +129,8 @@ public class LoadModel {
 	
 	@Test
 	public void testMedel(){
-		loadResource(Constant.rootPath+"resources"+File.separator+"test.pnt");
+		String s = Constant.rootPath+"resources"+File.separator+"test.pnt";
+		new LoadModel(s);
 	}
 	
 }

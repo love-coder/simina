@@ -7,6 +7,25 @@ package org.xidian.model;
  */
 public class Transition {
 	
+	int[] Transition;
+	
+	
+
+	public Transition(int[] transition) {
+		super();
+		Transition = transition;
+	}
+
+	public int[] getTransition() {
+		return Transition;
+	}
+
+	public void setTransition(int[] transition) {
+		Transition = transition;
+	}
+	
+	
+	
 	
 
 }

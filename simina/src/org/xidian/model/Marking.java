@@ -12,6 +12,18 @@ public class Marking {
 	public Marking(int[] marking) {
 		this.marking = marking;
 	}
+
+	
+	/**
+	 * 判断两状态是否相等，抄写hashcode()方法
+	 */
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+	
+	
 	
 	
 
