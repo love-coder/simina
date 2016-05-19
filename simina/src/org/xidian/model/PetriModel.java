@@ -13,6 +13,12 @@ public class PetriModel {
 	private Marking ininmarking; //初始marking
 	public int transCount, placesCount;
 	
+	/**
+	 * @param preMatrix
+	 * @param posMatrix
+	 * @param transition
+	 * @param ininmarking
+	 */
 	public PetriModel(Matrix preMatrix, Matrix posMatrix, Transition transition, Marking ininmarking) {
 		this.preMatrix = preMatrix;
 		this.posMatrix = posMatrix;

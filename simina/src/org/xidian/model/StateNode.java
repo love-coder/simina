@@ -9,20 +9,33 @@ import java.util.List;
  */
 public class StateNode {
 	
-	PetriModel model;
-	public int[] state; //节点
-	public List<State> ChildNodes;//孩子状态节点
-	int deepth;  //状态深度
-	int stateNo;  //节点编号
-	StateNode preNode;  //之前
-	boolean ifDeadlock = false;  //是否死锁状态
+	public PetriModel model;
+	public int[] state; 
+	public List<StateNode> ChildNodes;
+	public int deepth;  
+	public int stateNo;  
+	public boolean ifDeadlock = false;  //是否死锁状态
 	
-	public StateNode(int[] state, List<State> childNodes, int deepth, int stateNo) {
+	/**
+	 * @param model PetriModel
+	 * @param state 状态
+	 * @param childNodes 孩子节点
+	 * @param deepth //状态深度
+	 * @param stateNo //状态编号
+	 */
+	public StateNode(PetriModel model, int[] state, List<StateNode> childNodes, int deepth, int stateNo) {
+		this.model = model;
 		this.state = state;
 		ChildNodes = childNodes;
 		this.deepth = deepth;
 		this.stateNo = stateNo;
 	}
+	
+	public void addChildNodes(StateNode newChildNode) {
+		
+		
+	}
+	
 
 	/**
     * @param transIndex 发射变迁编号
@@ -42,7 +55,7 @@ public class StateNode {
 	   
 	 /**
 	  * 得到当前状态下能够发射的变迁
-	  * @return boolean[]
+	  * @return boolean[] 
 	  */
 	 private boolean[] getEnabledTrans() {
 	      //记录变迁是否能发射结果
