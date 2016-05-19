@@ -36,42 +36,6 @@ public class StateNode {
 		
 	}
 	
-
-	/**
-    * @param transIndex 发射变迁编号
-    * @param markup 待发射状态
-    * @return  
-    */
-	private int[] fire(int transIndex, int[] markup) {
-	    int[] newMarking = new int[markup.length];  //发射之后的marking
-	    System.out.print("==t" + (transIndex+1) + "==>");  //for debug
-	    for (int i = 0; i < markup.length; i++) {
-	    	newMarking[i] = markup[i] + model.getPreMatrix().getValue(i, transIndex) - 
-	        		model.getPosMatrix().getValue(i, transIndex);	
-	    }
-	    return newMarking;
-	}
-	   
-	   
-	 /**
-	  * 得到当前状态下能够发射的变迁
-	  * @return boolean[] 
-	  */
-	 private boolean[] getEnabledTrans() {
-	      //记录变迁是否能发射结果
-	      boolean[] result = new boolean[model.transCount];  
-	      
-	      for (int i = 0; i < model.transCount ;i++) {
-	         for (int j = 0; j < model.placesCount; j++) {
-	        	 //【重要】当前某个位置marking若小于后置矩阵对应位置的数字，则不能发射！
-	            if ((state[j] >= model.getPosMatrix().getValue(j, i))) {  
-	               result[i] = true;
-	               break;
-	            }
-	         }
-	      }
-	      return result;
-	   }  
 	 
 	 /**
 	  * hashCode()
@@ -91,6 +55,10 @@ public class StateNode {
 			 total = Integer.MAX_VALUE + total;
 		 }      
 		 return total;
+	}
+
+	public int[] getState() {
+		return state;
 	}
 
 }
