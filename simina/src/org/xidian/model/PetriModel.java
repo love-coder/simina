@@ -11,12 +11,15 @@ public class PetriModel {
 	private Matrix posMatrix; //后置矩阵
 	private Transition transition; //变迁
 	private Marking ininmarking; //初始marking
+	public int transCount, placesCount;
 	
 	public PetriModel(Matrix preMatrix, Matrix posMatrix, Transition transition, Marking ininmarking) {
 		this.preMatrix = preMatrix;
 		this.posMatrix = posMatrix;
 		this.transition = transition;
 		this.ininmarking = ininmarking;
+		transCount = transition.getTransition().length;
+		placesCount = ininmarking.getMarking().length;
 	}
 
 	public Matrix getPreMatrix() {

@@ -12,7 +12,6 @@ public class Transition {
 	
 
 	public Transition(int[] transition) {
-		super();
 		Transition = transition;
 	}
 

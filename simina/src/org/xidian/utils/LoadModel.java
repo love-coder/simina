@@ -18,24 +18,19 @@ import org.xidian.model.Transition;
  */
 public class LoadModel {
 
-	int[][] preMatrix;	//前置矩阵
-	int[][] posMatrix;	//后置矩阵
-	List<Integer> iniMarking;  //初始marking
+	static int[][] preMatrix;	//前置矩阵
+	static int[][] posMatrix;	//后置矩阵
+	static List<Integer> iniMarking;  //初始marking
 	
-	int defaultTranCount = 1000; //默认最大变迁数量为1000
-	int trueMaxTran = 0; //实际最大的变迁编号
+	static int defaultTranCount = 1000; //默认最大变迁数量为1000
+	static int trueMaxTran = 0; //实际最大的变迁编号
 	
-	String filePath; //文件位置
+	static String filePath; //文件位置
 	
-	public LoadModel(String filePath) {
-		this.filePath = filePath;
-		loadResource();
-	}
-
 	/**
 	 * @param filePath 文件路径
 	 */
-	public PetriModel loadResource() {
+	public static PetriModel loadResource(String filePath) {
 		//1.读文件
 		String resource = FileUtil.read(filePath, null);
 		Pattern pattern = Pattern.compile("\r|\n");
@@ -65,7 +60,7 @@ public class LoadModel {
 	 * 解析模型
 	 * @param str pnt文件的一行
 	 */
-	public void parseModelLine(String str){
+	public static void parseModelLine(String str){
 		if(str.equals("@")) return;
 		System.out.println("正在解析##" + str); //for debug
 		String[] strArr = str.split(","); 
@@ -105,7 +100,7 @@ public class LoadModel {
 	 * @param charArray
 	 * @return
 	 */
-	public String[] parseCharToStringArr(char[] charArray){
+	public static String[] parseCharToStringArr(char[] charArray){
 		List<String> temList =  new LinkedList<String>();
 		
 		for(int i = 0; i < charArray.length;) {
@@ -125,12 +120,6 @@ public class LoadModel {
 			}
 		}
 		return (String[]) temList.toArray();
-	}
-	
-	@Test
-	public void testMedel(){
-		String s = Constant.rootPath+"resources"+File.separator+"test.pnt";
-		new LoadModel(s);
 	}
 	
 }

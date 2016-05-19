@@ -8,9 +8,11 @@ public class Test {
 //		char a= '1';
 //		char b = '2';
 //		System.out.println(c=='\u0000');
+//		
+//		String s = "3 4 6 0";
+//		String[] ss = s.split(" ");
 		
-		String s = "3 4 6 0";
-		String[] ss = s.split(" ");
+		System.out.println(Integer.MAX_VALUE);
 		
 		
 	}

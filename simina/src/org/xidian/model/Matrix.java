@@ -78,7 +78,6 @@ public class Matrix {
 		return this.matrix[i][j];
 	}
 	
-	
 	//for debug 
 	public static void printMatrix(int[][] matrix) {
 		for(int i = 0; i < matrix.length; i++) {
@@ -86,6 +85,13 @@ public class Matrix {
 				System.out.print(matrix[i][j] + " ");
 			}
 			System.out.println();
+		}
+	}
+	
+	//for debug
+	public static void printArr(int[] array) {
+		for(int i = 0; i < array.length; i++) {
+			System.out.print(array[i]+ "");
 		}
 	}
 	

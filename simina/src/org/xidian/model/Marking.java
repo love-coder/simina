@@ -13,7 +13,14 @@ public class Marking {
 		this.marking = marking;
 	}
 
-	
+	public int[] getMarking() {
+		return marking;
+	}
+
+	public void setMarking(int[] marking) {
+		this.marking = marking;
+	}
+
 	/**
 	 * 判断两状态是否相等，抄写hashcode()方法
 	 */

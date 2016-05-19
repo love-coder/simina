@@ -1,5 +1,8 @@
 package org.xidian.calculation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.xidian.model.Marking;
 import org.xidian.model.PetriModel;
 
@@ -12,23 +15,21 @@ public class ReachabilityGraph {
 	
 	PetriModel model; 
 	Marking currentMarking; 
-
-	
-	
-	
-	
-	
-	
 	
 	/**
 	 * 得到当前状态下，能够发射的变迁序列
 	 * @param currentState 当前状态
-	 * @return
+	 * @return 
 	 */
 	public boolean[] getFireTrans(int currentState) {
 		
+		
+		
 		return null;
 	}
+	
+   
+	
 	
 	
 	
@@ -37,13 +38,8 @@ public class ReachabilityGraph {
 	 * @return
 	 */
 	public boolean canFire() {
-	
-		
 		
 		return false;
 	}
-	
-	
-	
 
 }
