@@ -63,8 +63,6 @@ public class LoadModel {
 	 * @param str pnt文件的一行
 	 */
 	public static void parseModelLine(String str){
-		//if(str.equals("@")) return;
-		//System.out.println("正在解析##" + str); //for debug
 		String[] strArr = str.split(","); 
 		//前置矩阵
 		String preStr = strArr[0].replaceAll("\\s{1,}", " ").trim();
