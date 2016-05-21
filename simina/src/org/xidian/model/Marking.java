@@ -7,31 +7,38 @@ package org.xidian.model;
  */
 public class Marking {
 	
-	private int[] marking;
+	public int[] marking;
+	
+	public Marking(int n) {
+		marking = new int[n];
+	}
 	
 	public Marking(int[] marking) {
 		this.marking = marking;
 	}
-
+	
 	public int[] getMarking() {
 		return marking;
 	}
 
-	public void setMarking(int[] marking) {
-		this.marking = marking;
-	}
-
 	/**
-	 * 判断两状态是否相等，抄写hashcode()方法
-	 */
-	@Override
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
+	  * hashCode()
+	  * 计算hashcode，用来比较两个对象是否相等
+	  */
+	 @Override
+	 public int hashCode(){
+		 int total = 0;
+		 for (int offset = 0; offset < marking.length; offset++) {
+			 total = (2 * total);
+			 for (int index = 0; index < (marking.length - offset); index++) {
+				total += marking[index];
+			 }
+		 }
+		 //处理hashcode过大的情况，
+		 if (total < 0) {
+			 total = Integer.MAX_VALUE + total;
+		 }      
+		 return total;
 	}
-	
-	
-	
-	
 
 }

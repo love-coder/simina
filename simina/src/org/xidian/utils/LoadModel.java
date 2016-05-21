@@ -37,6 +37,7 @@ public class LoadModel {
     	String[] strs = pattern.split(resource);
     	preMatrix = new int[strs.length-2][defaultTranCount];
     	posMatrix = new int[strs.length-2][defaultTranCount];
+    	iniMarking = new LinkedList<Integer>();
         //2.解析
     	for(int i = 1; i < strs.length; i++) {
     		parseModelLine(strs[i]);
@@ -67,7 +68,6 @@ public class LoadModel {
 		//前置矩阵
 		String preStr = strArr[0].replaceAll("\\s{1,}", " ").trim();
 		String[] preArr = preStr.split(" ");
-		iniMarking = new LinkedList<Integer>();
 		iniMarking.add(Integer.parseInt(preArr[1]));
 		for(int i = 2; i < preArr.length; i++) {
 			if(preArr[i].contains(":")) {

@@ -8,8 +8,6 @@ package org.xidian.model;
 public class Transition {
 	
 	int[] Transition;
-	
-	
 
 	public Transition(int[] transition) {
 		Transition = transition;
