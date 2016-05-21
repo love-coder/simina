@@ -1,10 +1,14 @@
 package org.xidian.model;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
+
+import org.xidian.utils.Constant;
+import org.xidian.utils.FileUtil;
 
 /**
  * 可达图（广义）数据模型
@@ -13,6 +17,8 @@ import java.util.Stack;
  */
 public class RGDataModel {
 	
+	//public String destPath = Constant.rootPath+"resources"+File.separator+"result.simina"; //输出路径
+	public String destPath;
 	public StateNode rootState; //初始状态
 	public PetriModel model;
 	public static Map<Integer,StateNode> preStatesMap = new HashMap<Integer,StateNode>(1000); //初始化1000个状态
@@ -21,7 +27,8 @@ public class RGDataModel {
 	 * @param rootState 初始状态
 	 * @param model PetriModel
 	 */
-	public RGDataModel(PetriModel model) {
+	public RGDataModel(PetriModel model, String destPath) {
+		this.destPath = destPath;
 		this.model = model;
 		this.rootState = new StateNode(model, model.getIninmarking().getMarking(), 1); //初始初始状态
 		try {
@@ -38,7 +45,9 @@ public class RGDataModel {
 	 */
 	public void createRG() throws CloneNotSupportedException{
 		
-		int stateCount = 1;	//状态数
+		StringBuffer resultStr = new StringBuffer("可达图分析结果如下：\n");
+		
+		int stateCount = 0;	//状态数
 		Stack<Integer> nextTrans = new Stack<Integer>(); //当前状态下，能够发射的变迁
 		Queue<StateNode> stateQueue = new LinkedList<StateNode>();  //状态队列
 		Marking temState = null;
@@ -50,26 +59,37 @@ public class RGDataModel {
 		
 		while(!stateQueue.isEmpty()) {
 			currentState = stateQueue.poll();	//每次取出队列中最前面的状态作为当前状态（注意该状态可能不是新状态）
+			resultStr.append("\nState nr:" + currentState.stateNo + "\n"
+					+ printPlaces() + "\n" + "toks: " + currentState + "\n");
 			canFire = getEnabledTrans(currentState);
 			for(int i = 0; i < canFire.length; i++) {
 				if(canFire[i]) nextTrans.push(i);
 			}
-			while(!nextTrans.isEmpty()) {
-				temState = fire(currentState, nextTrans.pop());
-				//新状态
-				if(!ifOccured(temState)) {
-					stateCount++;
-					duringState = new StateNode(model, temState.marking, stateCount);
-					preStatesMap.put(temState.hashCode(), duringState);
-					stateQueue.add((StateNode) duringState.clone());
-				//旧状态
-				}else{
-					//currentState = preStatesMap.get(temState.hashCode());
+			//死锁状态
+			if(nextTrans.isEmpty()) {
+				currentState.setIfDeadlock(true);
+				resultStr.append("dead state\n");
+			}else{
+				while(!nextTrans.isEmpty()) {
+					resultStr.append("==" + "t" + (nextTrans.peek() + 1) + "==>");
+					temState = fire(currentState, nextTrans.pop());
+					//新状态
+					if(!ifOccured(temState)) {
+						stateCount++;
+						duringState = new StateNode(model, temState.marking, stateCount);
+						resultStr.append("s"+duringState.stateNo+"\n");
+						preStatesMap.put(temState.hashCode(), duringState);
+						stateQueue.add((StateNode) duringState.clone());
+					//旧状态
+					}else{
+						resultStr.append(preStatesMap.get(temState.hashCode()).stateNo+"\n");
+					}
 				}
 			}
-			System.out.println(stateCount);
 		}
-		
+		resultStr.append("\n----------end----------");
+		System.out.println(resultStr.toString());
+		FileUtil.write(destPath, resultStr.toString(), false);
 	}
 	
 	/**
@@ -127,6 +147,19 @@ public class RGDataModel {
 //			preStatesMap.put(node.hashCode(),node);
 //			return false;
 		}
+	}
+	
+	/**
+	 * p.nr: 1 2 3 4 5 6 7 8
+	 * @return
+	 */
+	public String printPlaces() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("p.nr: ");
+		for(int i = 0; i < this.model.placesCount; i++) {
+			sb.append((i+1)+" ");
+		}
+		return sb.toString();
 	}
 
 }

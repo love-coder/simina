@@ -1,12 +1,9 @@
 eclipse.preferences.version=1
 encoding//resources/readme.txt=UTF-8
-encoding//src/org/xidian/backup/State.java=UTF-8
-encoding//src/org/xidian/calculation/ReachabilityGraph.java=UTF-8
 encoding//src/org/xidian/main/Main.java=UTF-8
 encoding//src/org/xidian/model/Marking.java=UTF-8
 encoding//src/org/xidian/model/Matrix.java=UTF-8
 encoding//src/org/xidian/model/PetriModel.java=UTF-8
-encoding//src/org/xidian/model/Place.java=UTF-8
 encoding//src/org/xidian/model/StateNode.java=UTF-8
 encoding//src/org/xidian/model/Transition.java=UTF-8
 encoding//src/org/xidian/utils/Constant.java=UTF-8

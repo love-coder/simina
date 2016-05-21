@@ -34,4 +34,17 @@ public class StateNode implements Cloneable{
 		 return super.clone();
     }
 
+	@Override
+	public String toString() {
+		StringBuffer ab = new StringBuffer();
+		for(int i = 0; i < this.state.length; i++) {
+			ab.append(this.state[i] + " ");
+		}
+		return ab.toString();
+	}
+
+	public void setIfDeadlock(boolean ifDeadlock) {
+		this.ifDeadlock = ifDeadlock;
+	}
+	
 }

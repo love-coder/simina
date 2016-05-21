@@ -11,8 +11,11 @@ public class Test {
 //		
 //		String s = "3 4 6 0";
 //		String[] ss = s.split(" ");
+//		System.out.println(Integer.MAX_VALUE);
 		
-		System.out.println(Integer.MAX_VALUE);
+		String s = "233.k";
+		s.indexOf('.');
+		System.out.println(s.substring(0, s.indexOf('.')));
 		
 		
 	}

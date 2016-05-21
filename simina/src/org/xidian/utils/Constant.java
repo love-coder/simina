@@ -13,5 +13,15 @@ public class Constant {
 	 * 项目根路径
 	 */
 	public final static String rootPath = System.getProperty("user.dir")+ File.separator; 
+	
+	/**
+	 * 源文件路径
+	 */
+	public static String sourcePath = "";  
+	
+	/**
+	 * 输出路径
+	 */
+	public static String destPath = ""; 
 
 }

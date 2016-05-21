@@ -40,6 +40,7 @@ public class LoadModel {
     	iniMarking = new LinkedList<Integer>();
         //2.解析
     	for(int i = 1; i < strs.length; i++) {
+    		if(strs[i].equals("@")) break;
     		parseModelLine(strs[i]);
     	}
     	//3.得到模型
@@ -62,8 +63,8 @@ public class LoadModel {
 	 * @param str pnt文件的一行
 	 */
 	public static void parseModelLine(String str){
-		if(str.equals("@")) return;
-		System.out.println("正在解析##" + str); //for debug
+		//if(str.equals("@")) return;
+		//System.out.println("正在解析##" + str); //for debug
 		String[] strArr = str.split(","); 
 		//前置矩阵
 		String preStr = strArr[0].replaceAll("\\s{1,}", " ").trim();
