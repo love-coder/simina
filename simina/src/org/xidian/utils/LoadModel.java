@@ -1,11 +1,9 @@
 package org.xidian.utils;
 
-import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.junit.Test;
 import org.xidian.model.Marking;
 import org.xidian.model.Matrix;
 import org.xidian.model.PetriModel;
@@ -63,6 +61,7 @@ public class LoadModel {
 	 * @param str pnt文件的一行
 	 */
 	public static void parseModelLine(String str){
+		if(str==""||str==null) return;
 		String[] strArr = str.split(","); 
 		//前置矩阵
 		String preStr = strArr[0].replaceAll("\\s{1,}", " ").trim();

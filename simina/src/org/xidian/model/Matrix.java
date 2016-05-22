@@ -8,6 +8,7 @@ package org.xidian.model;
 public class Matrix {
 	
 	public int[][] matrix;
+	
 	public String matrixName;
 	
 	/**
@@ -23,6 +24,7 @@ public class Matrix {
 	 */
 	public Matrix(int[][] matrix, String matrixName) {
 		super();
+		matrix.hashCode();
 		this.matrix = matrix;
 		this.matrixName = matrixName;
 	}

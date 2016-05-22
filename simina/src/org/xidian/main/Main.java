@@ -10,7 +10,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 import org.xidian.model.RGDataModel;
-import org.xidian.utils.Constant;
 import org.xidian.utils.FileUtil;
 import org.xidian.utils.LoadModel;
 
@@ -30,7 +29,7 @@ public class Main {
 				if(jfc.showOpenDialog(f)==JFileChooser.APPROVE_OPTION ){
 					if(jfc.getSelectedFile().getName().contains("pnt")){
 						createRG(jfc.getSelectedFile().getAbsolutePath(), jfc.getSelectedFile().getParentFile().getPath()+File.separator+
-								jfc.getSelectedFile().getName().substring(0, jfc.getSelectedFile().getName().indexOf('.'))+".doc");
+								jfc.getSelectedFile().getName().substring(0, jfc.getSelectedFile().getName().indexOf('.'))+".gra");
 					}
 				}
 			}

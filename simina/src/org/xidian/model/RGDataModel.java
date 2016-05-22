@@ -1,13 +1,11 @@
 package org.xidian.model;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
 
-import org.xidian.utils.Constant;
 import org.xidian.utils.FileUtil;
 
 /**
@@ -17,8 +15,7 @@ import org.xidian.utils.FileUtil;
  */
 public class RGDataModel {
 	
-	//public String destPath = Constant.rootPath+"resources"+File.separator+"result.simina"; //输出路径
-	public String destPath;
+	public String destPath; //输出路径
 	public StateNode rootState; //初始状态
 	public PetriModel model;
 	public static Map<Integer,StateNode> preStatesMap = new HashMap<Integer,StateNode>(1000); //初始化1000个状态
@@ -47,7 +44,7 @@ public class RGDataModel {
 		
 		StringBuffer resultStr = new StringBuffer("可达图分析结果如下：\n");
 		
-		int stateCount = 0;	//状态数
+		int stateCount = 1;	//状态数
 		Stack<Integer> nextTrans = new Stack<Integer>(); //当前状态下，能够发射的变迁
 		Queue<StateNode> stateQueue = new LinkedList<StateNode>();  //状态队列
 		Marking temState = null;
@@ -88,7 +85,7 @@ public class RGDataModel {
 			}
 		}
 		resultStr.append("\n----------end----------");
-		System.out.println(resultStr.toString());
+		//System.out.println(resultStr.toString());
 		FileUtil.write(destPath, resultStr.toString(), false);
 	}
 	
@@ -144,8 +141,6 @@ public class RGDataModel {
 			return true;
 		}else{
 			return false;
-//			preStatesMap.put(node.hashCode(),node);
-//			return false;
 		}
 	}
 	
