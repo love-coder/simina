@@ -1,5 +1,9 @@
 package org.xidian.model;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * State状态节点
  * @author HanChun
@@ -7,10 +11,13 @@ package org.xidian.model;
  */
 public class StateNode implements Cloneable{
 	
-	public PetriModel model;
-	public int[] state; 
-	public int stateNo;  
-	public boolean ifDeadlock = false;  //是否死锁状态
+	private boolean isChange =  false;  //到到死锁状态的距离,是否被计算过
+	private int toDeadLength = 1;  //到到死锁状态的距离
+	private int[] state; 
+	private int stateNo;  
+	private boolean ifDeadlock = false;  //是否死锁状态
+	
+	private List<StateNode> childNodes;  //该点孩子节点
 	
 	/**
 	 * @param model PetriModel
@@ -19,14 +26,19 @@ public class StateNode implements Cloneable{
 	 * @param deepth //状态深度
 	 * @param stateNo //状态编号
 	 */
-	public StateNode(PetriModel model, int[] state, int stateNo) {
-		this.model = model;
+	public StateNode(int[] state, int stateNo) {
 		this.state = state;
 		this.stateNo = stateNo;
+		childNodes = new LinkedList<StateNode>();
 	}
 
-	public int[] getState() {
-		return state;
+	public StateNode() {
+		
+	}
+	
+	@Override
+	 public int hashCode(){
+		return  Arrays.hashCode(state);
 	}
 	
 	@Override
@@ -36,15 +48,64 @@ public class StateNode implements Cloneable{
 
 	@Override
 	public String toString() {
+		if(this.state == null || this.state.length == 0) return null;
 		StringBuffer ab = new StringBuffer();
 		for(int i = 0; i < this.state.length; i++) {
 			ab.append(this.state[i] + " ");
 		}
 		return ab.toString();
 	}
+	
+	public void addPathLength() {
+		toDeadLength ++;
+	}
+
+	public int[] getState() {
+		return state;
+	}
+
+	public void setState(int[] state) {
+		this.state = state;
+	}
+
+	public int getStateNo() {
+		return stateNo;
+	}
+
+	public void setStateNo(int stateNo) {
+		this.stateNo = stateNo;
+	}
+
+	public boolean isIfDeadlock() {
+		return ifDeadlock;
+	}
 
 	public void setIfDeadlock(boolean ifDeadlock) {
 		this.ifDeadlock = ifDeadlock;
 	}
-	
+
+	public List<StateNode> getChildNodes() {
+		return childNodes;
+	}
+
+	public void setChildNodes(List<StateNode> childNodes) {
+		this.childNodes = childNodes;
+	}
+
+	public int getToDeadLength() {
+		return toDeadLength;
+	}
+
+	public void setToDeadLength(int toDeadLength) {
+		this.toDeadLength = toDeadLength;
+	}
+
+	public boolean isChange() {
+		return isChange;
+	}
+
+	public void setChange(boolean isChange) {
+		this.isChange = isChange;
+	}
+
 }

@@ -7,9 +7,9 @@ package org.xidian.model;
  */
 public class Matrix {
 	
-	public int[][] matrix;
+	private int[][] matrix;
 	
-	public String matrixName;
+	private String matrixName;
 	
 	/**
 	 * 

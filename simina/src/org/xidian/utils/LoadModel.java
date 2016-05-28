@@ -28,7 +28,7 @@ public class LoadModel {
 	/**
 	 * @param filePath 文件路径
 	 */
-	public static PetriModel loadResource(String filePath) {
+	public static void loadResource(String filePath) {
 		//1.读文件
 		String resource = FileUtil.read(filePath, null);
 		Pattern pattern = Pattern.compile("\r|\n");
@@ -53,7 +53,8 @@ public class LoadModel {
     	for(int i = 0; i<iniMarking.size();i++) {
     		marking[i] = iniMarking.get(i); 
     	}
-    	return new PetriModel(new Matrix(preMatrix, "preMatrix"), new Matrix(posMatrix, "posMatrix"), new Transition(transation), new Marking(marking));
+    	//初始化变量
+    	new PetriModel(new Matrix(preMatrix, "preMatrix"), new Matrix(posMatrix, "posMatrix"), new Transition(transation), new Marking(marking));
 	}
 	
 	/**

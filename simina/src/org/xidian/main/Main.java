@@ -30,6 +30,7 @@ public class Main {
 					if(jfc.getSelectedFile().getName().contains("pnt")){
 						createRG(jfc.getSelectedFile().getAbsolutePath(), jfc.getSelectedFile().getParentFile().getPath()+File.separator+
 								jfc.getSelectedFile().getName().substring(0, jfc.getSelectedFile().getName().indexOf('.'))+".gra");
+						
 					}
 				}
 			}
@@ -44,12 +45,14 @@ public class Main {
 	
 	public static void createRG(String resourcePath, String destPath) {
 		Long start = System.currentTimeMillis();
-		new RGDataModel(LoadModel.loadResource(resourcePath), destPath);  
+		LoadModel.loadResource(resourcePath); //加载资源
+		new RGDataModel(destPath);  
 		FileUtil.write(destPath, "\n分析耗时： "+String.valueOf(System.currentTimeMillis()-start)+"ms", true);
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-		init();
+		//init();
+		createRG(System.getProperty("user.dir") + File.separator  + "resources"+File.separator  + "test.pnt",System.getProperty("user.dir") + File.separator  + "resources"+File.separator  + "result.gra");
 	}
 	
 }

@@ -1,13 +1,22 @@
 package org.xidian.model;
 
+import org.jgrapht.graph.DefaultWeightedEdge;
+
 /**
  * 变迁类
  * @author HanChun
  * @version 1.0 2016-5-16
  */
-public class Transition {
+@SuppressWarnings("serial")
+public class Transition extends DefaultWeightedEdge{
 	
-	int[] Transition;
+	private int[] Transition;
+
+	private String tranName; 
+	
+	public Transition() {
+		
+	}
 
 	public Transition(int[] transition) {
 		Transition = transition;
@@ -20,9 +29,18 @@ public class Transition {
 	public void setTransition(int[] transition) {
 		Transition = transition;
 	}
-	
-	
-	
-	
+
+	public String getTranName() {
+		return tranName;
+	}
+
+	public void setTranName(String tranName) {
+		this.tranName = tranName;
+	}
+
+	@Override
+	public String toString() {
+		return tranName;
+	}
 
 }
