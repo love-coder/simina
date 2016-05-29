@@ -93,7 +93,7 @@ public class RGDataModel {
 			}
 		}
 		resultStr.append("\n----------end----------");
-		System.out.println(resultStr.toString());	//for debug
+		//System.out.println(resultStr.toString());	//for debug
 		FileUtil.write(destPath, resultStr.toString(), false);
 	}
 	
