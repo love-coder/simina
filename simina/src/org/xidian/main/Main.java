@@ -14,7 +14,7 @@ import org.xidian.utils.FileUtil;
 import org.xidian.utils.LoadModel;
 
 /**
- * 程序入口
+ * 程序入口一（供简单使用分析）
  * @author HanChun
  * @version 1.0 2016-5-19
  */

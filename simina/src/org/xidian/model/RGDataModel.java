@@ -93,7 +93,7 @@ public class RGDataModel {
 			}
 		}
 		resultStr.append("\n----------end----------");
-		//System.out.println(resultStr.toString());	//for debug
+		System.out.println(resultStr.toString());	//for debug
 		FileUtil.write(destPath, resultStr.toString(), false);
 	}
 	
@@ -171,7 +171,7 @@ public class RGDataModel {
 	 */
 	public void printDeadlockPath() {
 		
-		StringBuffer resultStr = new StringBuffer("动态路径规划分析如下：\n");
+		StringBuffer resultStr = new StringBuffer("\n\n动态路径规划分析如下：\n");
 		resultStr.append("完全许可性为："+grapht.vertexSet().size()+"\n");
 		resultStr.append("deadlock states 共  "+deadStates.size()+" 个"+"分别如下：" + "\n");
 		
@@ -190,7 +190,7 @@ public class RGDataModel {
 				resultStr.append(t.getTranName()+"-->");
 				//System.out.print(t.getTranName()+"-->");
 			}
-			resultStr.append("\n["+deadShortPaths.getEndVertex().getStateNo()+"] (最短路径)"+"\n");
+			resultStr.append("["+deadShortPaths.getEndVertex().getStateNo()+"] (最短路径)"+"\n");
 			//System.out.println("["+deadShortPaths.getEndVertex().getStateNo()+"] (最短路径)"+"\n");
 		}
 		resultStr.append("\n其余死锁路径参考（若状态数大于40，则显示其中部分路径）：\n");
@@ -212,11 +212,16 @@ public class RGDataModel {
 	    		//System.out.println();
 	    	}
 		}
-		resultStr.append("\n全局可达图环路信息分析如下：\n");
-		//System.out.println("\n全局可达图环路信息分析如下：");
-		CycleDetector<StateNode, Transition> cdetector =  new CycleDetector<StateNode, Transition>(grapht);
-		//System.out.println("共   "+cdetector.findCycles().size() + " 个环，其中经过节点（即可逆）的环共   " + cdetector.findCyclesContainingVertex(rootState).size() + " 个环");
-		resultStr.append("共   "+cdetector.findCycles().size() + " 个环，其中经过节点（即可逆）的环共   " + cdetector.findCyclesContainingVertex(rootState).size() + " 个环/n");		
+		
+		//暂时考虑是：状态数低于100计算环情况
+		if(grapht.vertexSet().size() < 100) {
+			resultStr.append("\n全局可达图环路信息分析如下：\n");
+			//System.out.println("\n全局可达图环路信息分析如下：");
+			CycleDetector<StateNode, Transition> cdetector =  new CycleDetector<StateNode, Transition>(grapht);
+			//System.out.println("共   "+cdetector.findCycles().size() + " 个环，其中经过节点（即可逆）的环共   " + cdetector.findCyclesContainingVertex(rootState).size() + " 个环");
+			resultStr.append("共   "+cdetector.findCycles().size() + " 个环，其中经过节点（即可逆）的环共   " + cdetector.findCyclesContainingVertex(rootState).size() + " 个环");		
+		}
+		
 		resultStr.append("\n最优步长信息分析如下：\n");
 		//System.out.println("\n最优步长信息分析如下：");
 		//下面为计算步长:
@@ -293,7 +298,8 @@ public class RGDataModel {
 				"占全部状态的"+preDeadlockSet.size()+"/"+grapht.vertexSet().size());
 //		System.out.println("\n综上，最优步长为："+pathLength+"\n删除"+preDeadlockSet.size()+"个坏状态," + 
 //				"占全部状态的"+preDeadlockSet.size()+"/"+grapht.vertexSet().size());
-		FileUtil.write(destPath, resultStr.toString(), true);
+		String path = destPath;
+		FileUtil.write(path.substring(0, path.length()-3)+"path", resultStr.toString(), true);
 	}
 	
 	/**

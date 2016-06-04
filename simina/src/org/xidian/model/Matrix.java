@@ -97,6 +97,7 @@ public class Matrix {
 		}
 	}
 	
+	
 	public int[][] getMatrix() {
 		return matrix;
 	}
