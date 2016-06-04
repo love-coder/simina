@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
-import org.xidian.model.RGDataModel;
+import org.xidian.alg.ReachabilityGraph;
 import org.xidian.utils.FileUtil;
 import org.xidian.utils.LoadModel;
 
@@ -46,7 +46,7 @@ public class Main {
 	public static void createRG(String resourcePath, String destPath) {
 		Long start = System.currentTimeMillis();
 		LoadModel.loadResource(resourcePath); //加载资源
-		new RGDataModel(destPath);  
+		new ReachabilityGraph(destPath);  
 		FileUtil.write(destPath, "\n分析耗时： "+String.valueOf(System.currentTimeMillis()-start)+"ms", true);
 	}
 	

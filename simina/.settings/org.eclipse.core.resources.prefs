@@ -3,7 +3,6 @@ encoding//resources/readme.txt=UTF-8
 encoding//src/org/xidian/main/Main.java=UTF-8
 encoding//src/org/xidian/model/Marking.java=UTF-8
 encoding//src/org/xidian/model/Matrix.java=UTF-8
-encoding//src/org/xidian/model/PetriModel.java=UTF-8
 encoding//src/org/xidian/model/StateNode.java=UTF-8
 encoding//src/org/xidian/utils/FileUtil.java=UTF-8
 encoding//src/org/xidian/utils/LoadModel.java=UTF-8
