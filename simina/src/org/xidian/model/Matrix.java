@@ -9,6 +9,8 @@ public class Matrix {
 	
 	private int[][] matrix;
 	
+	private String[][] strMatrix;
+	
 	private String matrixName;
 	
 	/**
@@ -23,8 +25,8 @@ public class Matrix {
 	 * @param matrixName
 	 */
 	public Matrix(int[][] matrix, String matrixName) {
-		super();
-		matrix.hashCode();
+		//super();
+		//matrix.hashCode();
 		this.matrix = matrix;
 		this.matrixName = matrixName;
 	}
@@ -37,6 +39,19 @@ public class Matrix {
 	public Matrix(int rows, int cols, String matrixName) {
 		matrix = new int[rows][cols];
 		this.matrixName = matrixName;
+	}
+	
+	/**
+	 * 变迁矩阵（弧）
+	 * @param i place个数
+	 * @param j token个数
+	 * @param matrixName 矩阵名称
+	 */
+	public Matrix(int rows, int cols, String matrixName, boolean flag) {
+		if(flag) {
+			strMatrix = new String[rows][cols];
+			this.matrixName = matrixName;
+		}
 	}
 	
 	/**
@@ -90,6 +105,16 @@ public class Matrix {
 		}
 	}
 	
+	//for debug 
+	public static void printStrMatrix(String[][] matrix) {
+		for(int i = 0; i < matrix.length; i++) {
+			for(int j = 0; j< matrix[0].length; j++) {
+				System.out.print(matrix[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+	
 	//for debug
 	public static void printArr(int[] array) {
 		for(int i = 0; i < array.length; i++) {
@@ -97,7 +122,14 @@ public class Matrix {
 		}
 	}
 	
-	
+	public String[][] getStrMatrix() {
+		return strMatrix;
+	}
+
+	public void setStrMatrix(String[][] strMatrix) {
+		this.strMatrix = strMatrix;
+	}
+
 	public int[][] getMatrix() {
 		return matrix;
 	}
