@@ -25,7 +25,7 @@ public final class FileUtil
         File file = new File(filePath);
         // 当文件不存在或者不可读时
         if ((!isFileExists(file)) || (!file.canRead())) {
-          //  System.out.println("file [" + filePath + "] is not exist or cannot read!!!");
+            System.out.println("file [" + filePath + "] is not exist or cannot read!!!");
             return null;
         }
         BufferedReader br = null;

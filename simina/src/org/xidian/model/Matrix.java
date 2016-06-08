@@ -98,6 +98,7 @@ public class Matrix {
 	//for debug 
 	public static void printMatrix(int[][] matrix) {
 		for(int i = 0; i < matrix.length; i++) {
+			System.out.print("["+i+"]");
 			for(int j = 0; j< matrix[0].length; j++) {
 				System.out.print(matrix[i][j] + " ");
 			}
@@ -113,6 +114,34 @@ public class Matrix {
 			}
 			System.out.println();
 		}
+	}
+	
+	/**
+	 * 得到矩阵的某一列
+	 * @param j
+	 * @param matrix
+	 * @return
+	 */
+	public static int[] getMatrixCol(int j, int[][] matrix) {
+		int[] tem = new int[matrix.length];
+		for(int i = 0; i < matrix.length; i++) {
+			tem[i] = matrix[i][j];
+		}
+		return tem;
+	}
+	
+	/**
+	 * 得到矩阵的某一行
+	 * @param i
+	 * @param matrix
+	 * @return
+	 */
+	public static int[] getMatrixRow(int i, int[][] matrix) {
+		int[] tem = new int[matrix.length];
+		for(int j = 0; j < matrix.length; j++) {
+			tem[j] = matrix[i][j];
+		}
+		return tem;
 	}
 	
 	//for debug
