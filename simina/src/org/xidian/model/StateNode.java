@@ -16,17 +16,30 @@ public class StateNode implements Cloneable{
 	private int[] state; 
 	private int stateNo;  
 	private boolean ifDeadlock = false;  //是否死锁状态
-	
 	private List<StateNode> childNodes;  //该点孩子节点
+	private int depth;   //节点深度
 	
 	/**
 	 * @param model PetriModel
 	 * @param state 状态
 	 * @param childNodes 孩子节点
-	 * @param deepth //状态深度
-	 * @param stateNo //状态编号
+	 * @param stateNo 状态编号
 	 */
 	public StateNode(int[] state, int stateNo) {
+		this.state = state;
+		this.stateNo = stateNo;
+		childNodes = new LinkedList<StateNode>();
+	}
+	
+	/**
+	 * @param model PetriModel
+	 * @param state 状态
+	 * @param childNodes 孩子节点
+	 * @param depth 状态深度
+	 * @param stateNo 状态编号
+	 */
+	public StateNode(int[] state, int stateNo, int depth) {
+		this.depth = depth;
 		this.state = state;
 		this.stateNo = stateNo;
 		childNodes = new LinkedList<StateNode>();
@@ -48,7 +61,9 @@ public class StateNode implements Cloneable{
 
 	@Override
 	public String toString() {
-		if(this.state == null || this.state.length == 0) return null;
+		if(this.state == null || this.state.length == 0) {
+			return null;
+		}
 		StringBuffer ab = new StringBuffer();
 		for(int i = 0; i < this.state.length; i++) {
 			ab.append(this.state[i] + " ");
@@ -108,4 +123,12 @@ public class StateNode implements Cloneable{
 		this.isChange = isChange;
 	}
 
+	public int getDepth() {
+		return depth;
+	}
+
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
+	
 }

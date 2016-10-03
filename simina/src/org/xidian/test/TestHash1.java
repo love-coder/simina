@@ -11,14 +11,13 @@ public class TestHash1 {
 		return 123;
 	}
 
-//	@Override
+//	@Override  
 //	 public boolean equals(Object o) {
 //	    if(this.hashCode()==o.hashCode()){
-//	    	return true;
+//	    	return true;    
 //	    }
 //	    return false;
 //	 }
-	
 	
 	public static void main(String[] args) {
 		List<Integer> trace = new LinkedList<Integer>();
@@ -27,7 +26,5 @@ public class TestHash1 {
 		trace.remove((Integer)5);
 		System.out.println(trace.size());
 	}
-	
-	
 	
 }

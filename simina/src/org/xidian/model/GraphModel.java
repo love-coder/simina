@@ -18,7 +18,7 @@ public class GraphModel {
 	public GraphModel(int statesAmount) {
 		this.statesAmount = statesAmount;
 		costMatrix = new Matrix(statesAmount, statesAmount, "costMatrix");
-		arcMatrix = new Matrix(statesAmount, statesAmount, "arcMatrix",true);
+		arcMatrix = new Matrix(statesAmount, statesAmount, "arcMatrix", true);
 	}
 
 	public Matrix getCostMatrix() {
