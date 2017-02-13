@@ -13,8 +13,7 @@ import java.io.IOException;
  * @author HanChun
  * @version 2016-5-16
  */
-public final class FileUtil
-{
+public final class FileUtil {
     /** 
      * 读取文件并按行输出
      * @param filePath
@@ -38,7 +37,6 @@ public final class FileUtil
             int index = 0;
             while (((spec == null) || index++ < spec) && (str = br.readLine()) != null) {
                 sb.append(str + "\n");
-             //   System.out.println(str);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -103,6 +101,10 @@ public final class FileUtil
             return true;
         }
         return false;
+    }
+    
+	public static Long getCurrentTime() {
+    	return System.currentTimeMillis();
     }
 
 }

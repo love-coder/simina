@@ -36,6 +36,59 @@ public class RGDataModel_base {
 			e.printStackTrace();
 		}
 	}
+	
+//	/**  
+//	 * 生成可达图(非递归方法), 输出到文件
+//	 * @throws CloneNotSupportedException 
+//	 */
+//	public void createReachabilityGraph() throws CloneNotSupportedException{
+//		preStatesMap = new HashMap<Integer,StateNode>(1000); //初始化1000个状态
+//		StringBuffer resultStr = new StringBuffer("可达图分析\n");
+//		int stateCount = 1;	//状态数
+//		Stack<Integer> nextTrans = new Stack<Integer>(); //当前状态下，能够发射的变迁
+//		Queue<StateNode> stateQueue = new LinkedList<StateNode>();  //状态队列
+//		Marking temState = null;
+//		StateNode currentState = rootState;
+//		StateNode duringState = null;  //过程中探索到的状态
+//		preStatesMap.put(currentState.hashCode(), currentState);
+//		stateQueue.add(rootState); //根状态为起始状态
+//		boolean[] canFire = null;
+//		while(!stateQueue.isEmpty()) {
+//			currentState = stateQueue.poll();	//每次取出队列中最前面的状态作为当前状态（注意该状态可能不是新状态）
+//			resultStr.append("\nState nr:" + currentState.getStateNo() + "\n"
+//					+ printPlaces() + "\n" + "toks: " + currentState + "\n");
+//			canFire = getEnabledTrans(currentState);
+//			for(int i = 0; i < canFire.length; i++) {
+//				if(canFire[i]) nextTrans.push(i);
+//			}
+//			//死锁状态
+//			if(nextTrans.isEmpty()) {
+//				currentState.setIfDeadlock(true);
+//				resultStr.append("dead state\n");
+//			}else{
+//				while(!nextTrans.isEmpty()) {
+//					resultStr.append("==" + "t" + (nextTrans.peek() + 1) + "==>");
+//					temState = fire(currentState, nextTrans.pop());
+//					//新状态
+//					if(!ifOccured(temState)) {
+//						stateCount++;
+//						duringState = new StateNode(temState.marking, stateCount);
+//						resultStr.append("s"+duringState.getStateNo()+"\n");
+//						preStatesMap.put(temState.hashCode(), duringState);
+//						stateQueue.add((StateNode) duringState.clone());
+//					//旧状态
+//					} else {
+//						resultStr.append("s"+preStatesMap.get(temState.hashCode()).getStateNo()+"\n");
+//					}
+//				}
+//			}
+//		}
+//		statesAmout = stateCount;
+//		resultStr.append("\n----------end----------");
+//		//System.out.println(resultStr.toString());	//for debug
+//		FileUtil.write(destPath, resultStr.toString(), false);
+//		initGrapht();
+//	}
 
 	/**
 	 * 生成可达图(非递归方法), 输出到文件

@@ -4,17 +4,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import org.xidian.alg.BaseData;
 import org.xidian.model.Marking;
 import org.xidian.model.Matrix;
 import org.xidian.model.PetriModel;
+import org.xidian.model.StateNode;
 import org.xidian.model.Transition;
 
 /**
- * 加载model
+ * 加载 PN model
  * @author HanChun
  * @version 1.0 2016-5-16
  */
 public class LoadModel {
+	
+	static BaseData baseData;
 
 	static int[][] preMatrix;	//前置矩阵
 	static int[][] posMatrix;	//后置矩阵
@@ -53,6 +57,10 @@ public class LoadModel {
     	for(int i = 0; i<iniMarking.size();i++) {
     		marking[i] = iniMarking.get(i); 
     	}
+    	//4.清空已存在基础模型数据
+		if(baseData != null) {
+			clearBaseData();
+		}
     	//初始化变量
     	new PetriModel(new Matrix(preMatrix, "preMatrix"), new Matrix(posMatrix, "posMatrix"), new Transition(transation), new Marking(marking));
 	}
@@ -119,6 +127,13 @@ public class LoadModel {
 			}
 		}
 		return (String[]) temList.toArray();
+	}
+	
+	public static void clearBaseData() {
+		BaseData.deadStates = null;
+		BaseData.graphModel = null;
+		BaseData.grapht = null;
+		BaseData.rootState = new StateNode(PetriModel.ininmarking.getMarking(), 1, 1);
 	}
 	
 }

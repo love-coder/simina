@@ -30,11 +30,11 @@ public class TestCycle2 {
     	for(int i = 0; i < strs.length; i++) {
     		temp = strs[i].split(" ");
     		for(int j = 1; j < temp.length; j++) {
-    			graphModel.costMatrix.getMatrix()[Integer.parseInt(temp[0])][Integer.parseInt(temp[j])] = 1;
+    			graphModel.getCostMatrix().getMatrix()[Integer.parseInt(temp[0])][Integer.parseInt(temp[j])] = 1;
     		}
     	}
     	
-    	graphModel.costMatrix.printMatrix(graphModel.costMatrix.getMatrix());
+    	graphModel.getCostMatrix().printMatrix(graphModel.getCostMatrix().getMatrix());
     	
     	cyclePath = new CyclePath2(graphModel);
     	

@@ -32,4 +32,17 @@ public class Marking {
 		return  Arrays.hashCode(marking);
 	}
 
+	@Override
+	public String toString() {
+		String result = "";
+		for(int i = 0; i < marking.length; i++) {
+			if(i != marking.length - 1) {
+				result += (marking[i]+",");
+			} else {
+				result += marking[i];
+			}
+		}
+		return result;
+	}
+
 }

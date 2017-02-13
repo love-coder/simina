@@ -1,22 +1,25 @@
 package org.xidian.model;
 
 /**
- * petri model完全转化为 graph model
+ * petri reachability graph model转化为 graph model
  * @author HanChun
  * @since 2016-6-4
  * @version 1.0
  */
 public class GraphModel {
 	
-	public Matrix costMatrix; //邻接矩阵
-	public Matrix arcMatrix;  //弧即变迁名称，如2:t2
-	public int statesAmount;
+	
+	private GraphModel graphtModel;
+	private Matrix costMatrix; //邻接矩阵
+	private Matrix arcMatrix;  //弧即变迁名称，如2:t2
+	private int statesAmount;
 	
 	/**
 	 * @param statesAmount 节点个数
 	 */
 	public GraphModel(int statesAmount) {
 		this.statesAmount = statesAmount;
+System.out.println(statesAmount);   //for debug
 		costMatrix = new Matrix(statesAmount, statesAmount, "costMatrix");
 		arcMatrix = new Matrix(statesAmount, statesAmount, "arcMatrix", true);
 	}

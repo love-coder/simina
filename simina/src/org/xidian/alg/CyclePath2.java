@@ -61,7 +61,7 @@ public final class CyclePath2{
 		
 		//graphModel.costMatrix.printMatrix(graphModel.costMatrix.getMatrix());
 		TestCycle t = new TestCycle();
-		t.testCycle(graphModel.getCostMatrix().getMatrix(), graphModel.statesAmount);
+		t.testCycle(graphModel.getCostMatrix().getMatrix(), graphModel.getStatesAmount());
 		//deepSearch();
 		
 	}

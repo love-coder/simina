@@ -34,7 +34,7 @@ public class CyclePath {
     	pathList = new LinkedList<Integer>();
     	allPathList = new LinkedList<List<Integer>>();
 		this.graphModel = graphModel;
-		this.statesCount = graphModel.statesAmount;
+		this.statesCount = graphModel.getStatesAmount();;
 		visited=new int[statesCount];
         Arrays.fill(visited,0);
         this.matrix = graphModel.getCostMatrix().getMatrix();

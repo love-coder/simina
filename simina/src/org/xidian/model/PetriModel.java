@@ -26,6 +26,12 @@ public class PetriModel {
 		PetriModel.ininmarking = ininmarking;
 		transCount = transition.getTransition().length;
 		placesCount = ininmarking.getMarking().length;
+		//for debug 得到输入和输出矩阵
+//		System.out.println("########## pre ##########");
+//		Matrix.printMatrix(preMatrix.getMatrix());
+//		System.out.println("########## post ##########");
+//		Matrix.printMatrix(posMatrix.getMatrix());
+		
 	}
 	
 }

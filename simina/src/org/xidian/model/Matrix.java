@@ -1,5 +1,8 @@
 package org.xidian.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 矩阵相关操作
  * @author HanChun
@@ -142,6 +145,25 @@ public class Matrix {
 			tem[j] = matrix[i][j];
 		}
 		return tem;
+	}
+	
+	/**
+	 * 返回数组中非零元素下标+1，即实际状态编号
+	 * @param i
+	 * @param matrix
+	 * @return
+	 */
+	public static List<Integer> getElementsExceptZero(int[] array) {
+		if(array == null || array.length <= 0) {
+			return null;
+		}
+		List<Integer> result = new ArrayList<Integer>();
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] != 0) {
+				result.add(i + 1);
+			}
+		}
+		return result;
 	}
 	
 	//for debug

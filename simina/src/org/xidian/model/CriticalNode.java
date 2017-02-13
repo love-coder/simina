@@ -8,8 +8,8 @@ package org.xidian.model;
  */
 public class CriticalNode {
 	
-	Integer type;  //0:好状态，1：邻界状态，2：死锁状态，3：完全死锁状态
-	Integer nodeNum;  //状态编号
+	private Integer type;  //0:好状态，1：邻界状态，2：死锁状态，3：完全死锁状态
+	private Integer nodeNum;  //状态编号
 	
 	public CriticalNode(Integer type, Integer nodeNum) {
 		this.type = type;

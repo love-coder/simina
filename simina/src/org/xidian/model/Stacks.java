@@ -25,7 +25,4 @@ public class Stacks {
 	public void pop(){
 		top = top.nextNode;
 	}
-	
-	
-	
 }
